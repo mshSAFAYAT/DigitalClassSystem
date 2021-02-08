@@ -2,7 +2,7 @@ import React from "react";
 import {Link } from "react-router-dom";
 
 const Class = (props) => {
- console.log(props.data.data)
+ //console.log(props.data.data)
   return (
     <div>
       <div className="col s12 m4">
