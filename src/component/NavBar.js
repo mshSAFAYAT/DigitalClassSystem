@@ -31,7 +31,6 @@ const HeadBar = () => {
                             style={{ height: "65px" }} />
                     </a>
                     <a className="brand-logo" style={{ marginLeft: 800 }}>
-                        Boi Poka
           </a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>

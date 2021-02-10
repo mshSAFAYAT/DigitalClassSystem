@@ -16,8 +16,15 @@ const Class = (props) => {
           <span className="card-title">Class {props.data.data.ClassName}</span>
           <div className="card-content">{props.data.data.ClassCode}</div>
           <div className="card-action">
+          {/* <Button disabled={loading} onClick={seeDetails} classname="w-100" type="submit">Details</Button> */}
           <Link
-              to='/' className="btn btn-primary w-100 mt-2"
+              to={{
+                pathname:'/createClassDetails',
+                aboutProps:{
+                  //props.data.data.ClassCode,
+                  name:props.data.data,
+                }
+              }} className="btn btn-primary w-100 mt-2"
             >
               See Class Details
             </Link>

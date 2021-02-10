@@ -20,7 +20,6 @@ const JoinClass =()=>{
     let JClass =[];
     //console.log(db);
     const handleJoin = async(e)=>{
-        //console.log(codeRef.current.value)
 
         db.collection("Classes")
         // .doc(codeRef)
@@ -66,7 +65,6 @@ const JoinClass =()=>{
             console.log(error);
         });
       
-          //  history.push("/");
 
     }
     const handleSubmit =async(e)=>{

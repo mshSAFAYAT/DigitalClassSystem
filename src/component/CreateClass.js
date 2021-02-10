@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import { useRef } from "react";
 import {Button,Card,Form,Alert, Container} from "react-bootstrap";
 import {useAuth } from "../context/AuthContext";
-import {BrowserRouter,Link,Switch, useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import { db } from "./../firebase";
 
 const CreateClass =()=>{

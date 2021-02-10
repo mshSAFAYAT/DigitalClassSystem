@@ -61,7 +61,7 @@ const HomePage =()=>{
         getClasses();
         getJoinedClasses()
       },[])
-     //console.log(Classes);
+     console.log(currentUser);
       //console.log(Classes[0].data.ClassOwner);
     return(
         <Container className="d-flex align-items-center justify-content-center"

@@ -10,6 +10,7 @@ import JoinClass from "./component/JoinClass";
 import HeadBar from "./component/NavBar";
 import HeadBarL from "./component/NavBarL";
 import { useAuth } from "./context/AuthContext";
+import CreateClassDetails from "./component/CreateClassDetails";
 
 function App() {
   const { currentUser } = useAuth([]);
@@ -25,6 +26,7 @@ function App() {
     <Privateroute path="/update-profile" exact component={UpdateProfile}/>;
     <Privateroute path="/createClass" exact component={CreateClass}/>;
     <Privateroute path="/joinClass" exact component={JoinClass}/>;
+    <Privateroute path="/createClassDetails" exact component={CreateClassDetails}/>;
     </BrowserRouter>
     
   );
