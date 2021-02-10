@@ -4,7 +4,7 @@ import {useAuth} from "./../context/AuthContext";
 
 const ClassList = (props) => {
     const {currentUser,logout} = useAuth();
-    //console.log(props);
+    //console.log(props.C);
   return (
     <div className="container">
       <div className="row">
@@ -12,12 +12,20 @@ const ClassList = (props) => {
           
           {       
               props.classes.map((book, i) => {
-                //   console.log(book.data.ClassOwner)
+                  // console.log(book.data)
                 //   console.log(currentUser.uid)
+                if(props.C==="Create"){
                   if(book.data.ClassOwner==currentUser.uid)
                   {
                     return <Class data={book} key={i} />
                   }
+                }else if(props.C==="Join"){
+                  if(book.data.ClassMemberID==currentUser.uid)
+                  {
+                    return <Class data={book} key={i} />
+                  }
+                }
+                 
              })
              }
         </div>

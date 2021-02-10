@@ -8,6 +8,7 @@ import ClassList from "./ClassList";
 const HomePage =()=>{
     const [error,setError] = useState("");
     const [Classes,setClasses] = useState([]);
+    const [JoinedClasses,setJoinedClasses] = useState([]);
     const {currentUser,logout} = useAuth();
     const history  = useHistory();
     const handleLogout = async () =>{
@@ -38,8 +39,27 @@ const HomePage =()=>{
             console.log(error);
         });
     }
+    const getJoinedClasses=async()=>{
+        db.collection("JoinedClasses")
+         .onSnapshot((querySnapshot)=>{
+             let allJClasses=[]
+             querySnapshot.forEach((doc)=>{
+                 allJClasses.push({
+                     id:doc.id,
+                     data:doc.data(),
+                 });
+             });
+             if(allJClasses!=null){
+                 setJoinedClasses(allJClasses)
+             }
+             else console.log("no Joined Class")
+         },(error)=>{
+             console.log(error);
+         });
+     }
     useEffect(()=>{
-        getClasses()
+        getClasses();
+        getJoinedClasses()
       },[])
      //console.log(Classes);
       //console.log(Classes[0].data.ClassOwner);
@@ -63,7 +83,10 @@ const HomePage =()=>{
                     </span>
                     <strong style={{alignContent:"left"}}>Created Classes: </strong>
                  
-        <ClassList classes={Classes}/>
+             <ClassList classes={Classes} C={"Create"}/>
+             <strong style={{alignContent:"left"}}>Joined Classes: </strong>
+                 
+                 <ClassList classes={JoinedClasses} C={"Join"}/>
                 </Card.Body>
                 <Button variant="Link" onClick={handleLogout}>Log Out</Button>
 
