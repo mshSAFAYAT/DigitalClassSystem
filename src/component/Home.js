@@ -74,13 +74,9 @@ const HomePage =()=>{
                     {error?
                     <Alert variant="danger">{JSON.stringify(error)}</Alert>
                     :""}
-                    <strong>Email: </strong>
-                    { currentUser && currentUser.email}
-                    <Link to= '/update-profile' className = "btn btn-primary w-100 mt-3" >Up Profile</Link>
-                    <span>
-                    <Link to= '/createClass' className = "btn btn-primary w-100 mt-3" >Create Class</Link>
-                    <Link to= '/joinClass' className = "btn btn-primary w-100 mt-3" >Join Class</Link>
-                    </span>
+                    {/* <strong>Email: </strong>
+                    { currentUser && currentUser.email} */}
+                   
                     <strong style={{alignContent:"left"}}>Created Classes: </strong>
                  
              <ClassList classes={Classes} C={"Create"}/>
@@ -88,7 +84,7 @@ const HomePage =()=>{
                  
                  <ClassList classes={JoinedClasses} C={"Join"}/>
                 </Card.Body>
-                <Button variant="Link" onClick={handleLogout}>Log Out</Button>
+                {/* <Button variant="Link" onClick={handleLogout}>Log Out</Button> */}
 
             </Card>
             <div>

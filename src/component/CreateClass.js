@@ -28,38 +28,9 @@ const CreateClass =()=>{
             members:[],
         }).then(()=>{
             alert("Class created");
+            history.push("/");
         })
     }
-    const handleSubmit =async(e)=>{
-        e.preventDefault();
-
-    //     if(passwordRef.current.value !== confirmPasswordRef.current.value){
-    //       return  setError("Passwords do not match!");
-    //     }
-        
-    //         setLoading(true);
-    //         setError("");
-    //         const promises =[];
-    //         if(emailRef.current.value !== currentUser.email ){
-    //             promises.push(updateEmail(emailRef.current.value))
-    //         }
-    //         if(emailRef.current.value)
-    //         {
-    //             promises.push(updatePassword(passwordRef.current.value))
-    //         }
-    //         Promise.all(promises)
-    //         .then(()=>
-    //         {
-    //             history.push("/");
-    //         })
-    //         .catch((error)=>
-    //         {
-    //             setError(error)
-    //         })
-    //         .finally(()=>{
-    //             setLoading(false);
-    //         })
-     };
     
     return(
         <Container className='d-flex align-items-center justify-content-center'

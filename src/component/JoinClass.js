@@ -7,10 +7,12 @@ import { db } from "./../firebase";
 import * as admin from 'firebase-admin';
 
 const JoinClass =()=>{
-    const [JoiningClass,setJClass] = useState("");
+    const [JoiningClassId,setJClass] = useState("");
+    const [JoiningClassName,setJClassName] = useState("");
+
     const [classOwner,setclassOwner] = useState("");
     const codeRef = useRef();
-    const {updateEmail,updatePassword,currentUser} = useAuth();
+    const {currentUser} = useAuth();
     const history =useHistory();
 
     const [error, setError] = useState("");
@@ -18,7 +20,7 @@ const JoinClass =()=>{
     let JClass =[];
     //console.log(db);
     const handleJoin = async(e)=>{
-        console.log(codeRef.current.value)
+        //console.log(codeRef.current.value)
 
         db.collection("Classes")
         // .doc(codeRef)
@@ -40,17 +42,19 @@ const JoinClass =()=>{
                  }
                  else{
                     setJClass(JClass[0].id)
-                    //console.log(JClass[0].data.ClassOwner)
+                    //setJClassName(JClass[0].data.ClassName)
+                    //console.log(JClass[0].data.ClassName)
                     setclassOwner(JClass[0].data.ClassOwner)
                     db.collection("JoinedClasses").add({
-                        ClassId: JoiningClass,
+                        ClassId: JoiningClassId,
+                        ClassName: JClass[0].data.ClassName,
                         ClassCode: codeRef.current.value,
                         ClassMemberID: currentUser.uid,
                         ClassMemberName: currentUser.displayName,
                         ClassMemberMail: currentUser.email,
                         ClassOwnerID: classOwner,
-            
                     }).then(()=>{
+
                         alert("Joined in class");
                         history.push("/");
                     })
