@@ -4,9 +4,11 @@ import {Button,Card,Form,Alert, Container} from "react-bootstrap";
 import {useAuth} from "../context/AuthContext";
 import {BrowserRouter,Link,Switch, useHistory} from "react-router-dom";
 import { db } from "./../firebase";
+import * as admin from 'firebase-admin';
 
 const JoinClass =()=>{
-    const [JoiningClass,setJClass] = useState(false);
+    const [JoiningClass,setJClass] = useState("");
+    const [classOwner,setclassOwner] = useState("");
     const codeRef = useRef();
     const {updateEmail,updatePassword,currentUser} = useAuth();
     const history =useHistory();
@@ -14,8 +16,10 @@ const JoinClass =()=>{
     const [error, setError] = useState("");
     const [loading,setLoading] = useState(false);
     let JClass =[];
-
+    //console.log(db);
     const handleJoin = async(e)=>{
+        console.log(codeRef.current.value)
+
         db.collection("Classes")
         // .doc(codeRef)
         .onSnapshot((querySnapshot)=>{
@@ -27,25 +31,38 @@ const JoinClass =()=>{
                     data:docRef.data(),
                 });
             });
-            //console.log(codeRef.current.value)
             if(allClasses!=null){
                  JClass=allClasses.filter(c=>c.data.ClassCode==codeRef.current.value )
-                setJClass(JClass)
-                console.log(JClass[0].id)
+                 if(JClass.length<=0 )
+                 {
+                     alert("No Class with this code ");
+                    console.log("no class");
+                 }
+                 else{
+                    setJClass(JClass[0].id)
+                    //console.log(JClass[0].data.ClassOwner)
+                    setclassOwner(JClass[0].data.ClassOwner)
+                    db.collection("JoinedClasses").add({
+                        ClassId: JoiningClass,
+                        ClassCode: codeRef.current.value,
+                        ClassMemberID: currentUser.uid,
+                        ClassMemberName: currentUser.displayName,
+                        ClassMemberMail: currentUser.email,
+                        ClassOwnerID: classOwner,
+            
+                    }).then(()=>{
+                        alert("Joined in class");
+                        history.push("/");
+                    })
+                 }
+                //console.log(currentUser.displayName)
             }
             else console.log("no class")
         },(error)=>{
             console.log(error);
         });
-        //let jid=JClass[0].id;
-        // db.collection("Classes").doc(
-        //     "FQJC3eI7feYYI7o3rvzY"
-        //     ).update({
-        //     members: db.FieldValue.arrayUnion(currentUser.uid),
-        // }).then(()=>{
-        //     alert("Joind in class " );
-        // })
-        //     history.push("/");
+      
+          //  history.push("/");
 
     }
     const handleSubmit =async(e)=>{
