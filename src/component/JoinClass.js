@@ -45,13 +45,13 @@ const JoinClass =()=>{
                     //console.log(JClass[0].data.ClassName)
                     setclassOwner(JClass[0].data.ClassOwner)
                     db.collection("JoinedClasses").add({
-                        ClassId: JoiningClassId,
+                        ClassId: JClass[0].id,
                         ClassName: JClass[0].data.ClassName,
                         ClassCode: codeRef.current.value,
                         ClassMemberID: currentUser.uid,
                         ClassMemberName: currentUser.displayName,
                         ClassMemberMail: currentUser.email,
-                        ClassOwnerID: classOwner,
+                        ClassOwnerID: JClass[0].data.ClassOwner,
                     }).then(()=>{
 
                         alert("Joined in class");

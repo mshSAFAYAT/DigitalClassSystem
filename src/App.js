@@ -11,6 +11,8 @@ import HeadBar from "./component/NavBar";
 import HeadBarL from "./component/NavBarL";
 import { useAuth } from "./context/AuthContext";
 import CreateClassDetails from "./component/CreateClassDetails";
+import ShowMembers from "./component/ShowMembers";
+import MemberDetails from "./component/MemberDetails";
 
 function App() {
   const { currentUser } = useAuth([]);
@@ -27,6 +29,8 @@ function App() {
     <Privateroute path="/createClass" exact component={CreateClass}/>;
     <Privateroute path="/joinClass" exact component={JoinClass}/>;
     <Privateroute path="/createClassDetails" exact component={CreateClassDetails}/>;
+    <Privateroute path="/members" exact component={ShowMembers}/>;
+    <Privateroute path="/memberDetails" exact component={MemberDetails}/>;
     </BrowserRouter>
     
   );
