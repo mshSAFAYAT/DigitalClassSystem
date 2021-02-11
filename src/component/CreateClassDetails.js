@@ -2,6 +2,7 @@ import React from "react";
 import {Link } from "react-router-dom";
 import AddPost from "./AddPost";
 import NewPost from "./NewPost";
+import PostCard from "./PostCard";
 
 const CreateClassDetails = (props) => {
   return (
@@ -40,7 +41,8 @@ const CreateClassDetails = (props) => {
             >
              Take Attendance            </Link>
           <div className="card-action">
-        <AddPost data={props.location.state}/>          
+        <AddPost data={props.location.state}/> 
+        <PostCard data={props.location.state}/>        
         <Link
               to='/' className="btn btn-primary w-100 mt-2"
             >

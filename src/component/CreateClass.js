@@ -39,7 +39,7 @@ const CreateClass =()=>{
             <Card>
                 <Card.Body>
                     <h2 className='text-center mb-4'>  Create Class</h2>
-                    <h3 className='text-center mb-4'> { currentUser && currentUser.uid} </h3>
+                    <h3 className='text-center mb-4'> { currentUser && currentUser.email} </h3>
                     {error?(
                     <Alert variant="danger">{JSON.stringify(error)}</Alert>
 
