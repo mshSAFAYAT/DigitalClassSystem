@@ -1,7 +1,6 @@
 import React,{useState} from "react";
 import {Button,Card,Alert, Container} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import MemberDetails from "./MemberDetails";
 
 const MemberCard=(props)=>{
      //console.log(props.count);
@@ -15,21 +14,13 @@ return(
         {/* <Card.Title title={"m"} subtitle=' commented on your post'  >
           Member:            Emails </Card.Title> */}
           {console.log(props.data.data)}
-          {/* <Link to={{pathname:"/memberDetails", aboutProps:{
-                  //props.data.data,
-                  name:props.data.data,
-                }
-        
-        }}><h4>{props.count} . {props.data.data.ClassMemberMail}</h4></Link> */}
-            <Link
-              to={{
-                pathname:'/memberDetails',
-               
-                  volumeId:props.data.data,
-                
-              }}  className="btn btn-primary w-100 mt-2"
-            >
-<h4>{props.count} . {props.data.data.ClassMemberMail}</h4>            </Link>
+          <Link
+to={{
+pathname: "/memberDetails",
+userProps: {name: props.data.data.ClassMemberMail,
+memId:props.data.data.ClassMemberID},
+}}>
+<h4>{props.count} . {props.data.data.ClassMemberMail}</h4></Link>  
   
     </Card>
 )
