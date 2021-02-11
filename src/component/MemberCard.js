@@ -17,7 +17,7 @@ return(
           <Link
 to={{
 pathname: "/memberDetails",
-userProps: {name: props.data.data.ClassMemberMail,
+state: {name: props.data.data.ClassMemberMail,
 memId:props.data.data.ClassMemberID},
 }}>
 <h4>{props.count} . {props.data.data.ClassMemberMail}</h4></Link>  

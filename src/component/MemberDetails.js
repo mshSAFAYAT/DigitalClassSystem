@@ -5,7 +5,7 @@ import { useLocation} from "react-router-dom"
 
 const MemberDetails = (props) => {
         let location = useLocation();
-        console.log(location.userProps);
+        console.log(location.state);
         let[member,setMember]=useState([])
         let[memberMail,setMemberMail]=useState("")
         let[memberPhone,setMemberPhone]=useState("")
@@ -13,7 +13,7 @@ const MemberDetails = (props) => {
         const [reload,setReload]=useState(false);
         const getMember=async()=>{
           setReload(true)
-           db.collection("Users").doc(location.userProps.memId).get()
+           db.collection("Users").doc(location.state.memId).get()
            .then((doc)=>
            {
                setMember(doc.data().Name)

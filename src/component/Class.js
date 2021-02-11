@@ -2,7 +2,8 @@ import React from "react";
 import {Link } from "react-router-dom";
 
 const Class = (props) => {
- console.log(props.data.data.ClassName)
+  console.log(props.data)
+ //console.log(props.data.data.ClassName)
   return (
     <div>
       <div className="col s12 m4">
@@ -21,9 +22,10 @@ const Class = (props) => {
           <Link
               to={{
                 pathname:'/createClassDetails',
-                aboutProps:{
+                state:{
                   //props.data.data,
                   name:props.data.data,
+                  classId:props.data.id,
                 }
               }} className="btn btn-primary w-100 mt-2"
             >

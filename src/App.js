@@ -13,6 +13,7 @@ import { useAuth } from "./context/AuthContext";
 import CreateClassDetails from "./component/CreateClassDetails";
 import ShowMembers from "./component/ShowMembers";
 import MemberDetails from "./component/MemberDetails";
+import Attendance from "./component/Attendance";
 
 function App() {
   const { currentUser } = useAuth([]);
@@ -31,6 +32,7 @@ function App() {
     <Privateroute path="/createClassDetails" exact component={CreateClassDetails}/>;
     <Privateroute path="/members" exact component={ShowMembers}/>;
     <Privateroute path="/memberDetails" exact component={MemberDetails}/>;
+    <Privateroute path="/attendance" exact component={Attendance}/>;
     </BrowserRouter>
     
   );

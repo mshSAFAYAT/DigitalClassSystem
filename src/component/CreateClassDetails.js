@@ -3,7 +3,6 @@ import {Link } from "react-router-dom";
 import NewPost from "./NewPost";
 
 const CreateClassDetails = (props) => {
- console.log(props.location.aboutProps)
   return (
     <div>
       <div className="col s12 m7">
@@ -14,19 +13,31 @@ const CreateClassDetails = (props) => {
             style={{ width: 600, height: 180 }} alt=""
           />
         </div>
-          <span className="card-title"> Class {props.location.aboutProps.name.ClassName}</span>
-          <div className="card-content">Class Code: {props.location.aboutProps.name.ClassCode}</div>
+          <span className="card-title"> Class {props.location.state.name.ClassName}</span>
+          <div className="card-content">Class Code: {props.location.state.name.ClassCode}</div>
           <Link
               to={{
                 pathname:'/members',
-                aboutProps:{
+                state:{
                   //props.data.data,
-                  name:props.location.aboutProps,
+                  name:props.location.state,
+
                 }
               }} className="btn btn-primary w-100 mt-2"
             >
               See Class Members
             </Link>
+            <Link
+              to={{
+                pathname:'/members',
+                state:{
+                  //props.data.data,
+                  name:props.location.state,
+                  attendance:true,
+                }
+              }} className="btn btn-primary w-100 mt-2"
+            >
+             Take Attendance            </Link>
           <div className="card-action">
             {/* <NewPost/> */}
           <Link
