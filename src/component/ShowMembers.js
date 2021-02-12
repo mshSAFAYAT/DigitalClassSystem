@@ -58,7 +58,7 @@ const ShowMembers = (props) => {
                   return props.location.state.attendance ? (
                     <Attendance data={book} key={i} count={count} />
                 ) : ( 
- <MemberCard data={book} key={i} count={count} />
+            <MemberCard data={book} key={i} count={count} />
                 );
                 // return <MemberCard data={book} key={i} count={count} />
             // return <Book data={book} key={i} />

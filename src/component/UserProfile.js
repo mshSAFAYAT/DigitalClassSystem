@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Alert, Container } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useAuth } from "./../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { db } from "./../firebase";
-import ClassList from "./ClassList";
 import "firebase/auth";
-import * as firebase from "firebase";
 const UserProfile = () => {
     const { currentUser, logout } = useAuth();
     

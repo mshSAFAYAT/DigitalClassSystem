@@ -5,7 +5,7 @@ import {useAuth } from "../context/AuthContext";
 import { db } from "./../firebase";
 
 const Attendance=(props)=>{
-     console.log(props);
+     //console.log(props);
      const {currentUser} = useAuth();
      const [details,setDetails]=useState(false);
      const takePresent =async(e)=>{
@@ -58,7 +58,7 @@ return(
         {setDetails(false)} */}
         {/* <Card.Title title={"m"} subtitle=' commented on your post'  >
           Member:            Emails </Card.Title> */}
-          {console.log(props.data.data)}
+          {/* {console.log(props.data.data)} */}
           <div className=" row"  > 
           <h5>{props.count} . {props.data.data.ClassMemberMail} </h5>  
          <div className=""> <Button variant="Link"  onClick={takePresent}   type="submit">Present</Button> 

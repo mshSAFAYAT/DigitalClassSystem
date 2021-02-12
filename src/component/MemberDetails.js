@@ -7,7 +7,7 @@ import jsPDF from "jspdf"
 
 const MemberDetails = (props) => {
         let location = useLocation();
-        console.log(location.state);
+        //console.log(location.state);
         let[member,setMember]=useState([])
         let[memberMail,setMemberMail]=useState("")
         let[memberPhone,setMemberPhone]=useState("")
