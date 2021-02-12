@@ -89,8 +89,7 @@ const MemberDetails = (props) => {
                setMemberMail(doc.data().Email)
                setMemberPhone(doc.data().Phone)
                console.log(doc.data())
-           })
-                    
+           })                  
         } 
     
         useEffect(()=>{

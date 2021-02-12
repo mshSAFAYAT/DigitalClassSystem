@@ -34,9 +34,9 @@ const CreateClass =()=>{
     
     return(
         <Container className='d-flex align-items-center justify-content-center'
-        style={{minHeight:"100vh"}}>
+        style={{minHeight:"100vh", paddingTop:2}}>
         <div className='w-100' style={{maxWidth:"400px"}}>
-            <Card>
+            <Card style={{}}>
                 <Card.Body>
                     <h2 className='text-center mb-4'>  Create Class</h2>
                     <h3 className='text-center mb-4'> { currentUser && currentUser.email} </h3>

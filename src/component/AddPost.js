@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRef } from "react";
 import { input, Button, Card, Form, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import { db } from "./../firebase";
-import * as admin from 'firebase-admin'
 import moment from "moment";
-import { BrowserRouter, Link, Switch, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 function CurrentDate() {
     var date = new moment().format("DD/MM/YYYY");
     return date;
 }
 
 const AddPost = (props) => {
-    console.log(props);
-   // const [clId,setClId]=useState("")
-    let clId ="";
+    //console.log(props);
+    let[member,setMember]=useState([])
+    let[memberMail,setMemberMail]=useState("")
+    const getMemberName=async()=>{
+         db.collection("Users").doc(currentUser.uid).get()
+         .then((doc)=>
+         { 
+            setMember(doc.data().Name)
+            setMemberMail(doc.data().Email)
+           // console.log(doc.data())
+         })                  
+      } 
+          let clId ="";
     if(props.data.C == "Join"){
         console.log(props.data.name.ClassId)
          clId=props.data.name.ClassId;
@@ -37,7 +46,8 @@ const AddPost = (props) => {
                 .collection("posts")
                 .add({
                     post: Post.current.value,
-                    postOwner: currentUser.displayName,
+                    postOwner: member,
+                    postOwnerEmail:memberMail,
                     postOwnerId: currentUser.uid,
                     classId: clId,
                     //creatTime: db.Timestamp.now(),
@@ -50,13 +60,16 @@ const AddPost = (props) => {
                 });
             Post.current.value="";
             //input.current.clear();
-            console.log(Post)
+            //console.log(Post)
         }
         else {
             alert("Input Field Empty");
         }
     }
-
+    useEffect(()=>{
+        getMemberName();
+       
+      },[])
     return (
         <div>
             <Form>

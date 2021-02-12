@@ -31,7 +31,7 @@ const HeadBar = () => {
                             style={{ height: "65px" }} />
                     </a>
                    <Link
-                        to='/'  style={{ marginLeft: 800 , fontSize:26,}}>
+                        to='/'  style={{ marginLeft: 626 , fontSize:26,}}>
                         Digital Class System
                      </Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
