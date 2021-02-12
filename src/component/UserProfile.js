@@ -1,26 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useAuth } from "./../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { db } from "./../firebase";
+import { db, storage } from "./../firebase";
 import "firebase/auth";
 const UserProfile = () => {
     const { currentUser, logout } = useAuth();
-    
+    let nameRef =useRef("");
     let[member,setMember]=useState("")
     let[memberMail,setMemberMail]=useState("")
     let[memberPhone,setMemberPhone]=useState("") 
-    const getUserDetails=async()=>{
+    // const [userImg, setUserImg] = useState(null);
+    // const types = ['image/png', 'image/jpeg']; // image types
+    // const [error, setError] = useState("");
+
+    const getUserDetails=()=>{
         db.collection("Users").doc(currentUser.uid).get()
            .then((doc)=>
            {
+            console.log(doc.data())
+              // nameRef.current=doc.data.Name;
                setMember(doc.data().Name)
-               setMemberMail(doc.data().Email)
+                setMemberMail(doc.data().Email)
                setMemberPhone(doc.data().Phone)
-               console.log(doc.data())
-           })
-          
+           })       
      }
+    //  const userImgHandler = (e) => {
+    //     let selectedFile = e.target.files[0];
+    //     if (selectedFile && types.includes(selectedFile.type)) {
+    //         setUserImg(selectedFile);
+    //         setError('')
+    //     }
+    //     else {
+    //         setUserImg(null);
+    //         setError('Please select a valid image type (jpg or png)');
+    //     }
+    // }
      useEffect(()=>{
         getUserDetails();
       },[]);
@@ -40,6 +55,10 @@ const UserProfile = () => {
                             <div>
                             <strong>Phone: </strong>
                             {memberPhone}</div>
+                            {/* <label htmlFor="product-img">Product Image</label>
+                <input type="file" className='form-control' id="file" 
+                    onChange={userImgHandler} />
+                <br /> */}
                     </div>
                     <div className="card-action">
                         <Link to='/update-profile'>Update Profile</Link>

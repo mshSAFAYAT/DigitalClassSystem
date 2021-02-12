@@ -11,13 +11,14 @@ const useAuth = () =>{
 
 const AuthProvider = (props)=>{
     const [currentUser, setCurrentUser] = useState({});
-    const signup = (email,password,name,phone)=>{
+    const signup = (email,password,name,phone,userImg)=>{
         
         return auth.createUserWithEmailAndPassword(email, password).then((cred) =>{
             db.collection("Users").doc(cred.user.uid).set({
                 Name: name,
                 Phone: phone,
                 Email: email,
+                ImgURL:"",
             })
         })
         //  firebase

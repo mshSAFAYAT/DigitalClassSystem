@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRef } from "react";
+import { auth,db,storage } from "./../firebase";
 import {Button,Card,Form,Alert, Container} from "react-bootstrap";
 import {useAuth} from "./../context/AuthContext";
 import {Link,useHistory} from "react-router-dom";
@@ -11,11 +12,24 @@ const SignUp =()=>{
     const confirmPasswordRef = useRef();
     const phoneRef = useRef();
     const {signup} = useAuth();
+    const [userImg, setUserImg] = useState(null);
+    const types = ['image/png', 'image/jpeg']; // image types
 
     const [error, setError] = useState("");
     const [loading,setLoading] = useState(false);
     const history  = useHistory();
 
+    const userImgHandler = (e) => {
+        let selectedFile = e.target.files[0];
+        if (selectedFile && types.includes(selectedFile.type)) {
+            setUserImg(selectedFile);
+            setError('')
+        }
+        else {
+            setUserImg(null);
+            setError('Please select a valid image type (jpg or png)');
+        }
+    }
     const handleSubmit =async(e)=>{
         e.preventDefault();
 
@@ -25,7 +39,7 @@ const SignUp =()=>{
         try{
             setLoading(true);
             setError("");
-            await signup(emailRef.current.value, passwordRef.current.value,nameRef.current.value,phoneRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value,nameRef.current.value,phoneRef.current.value,userImg)
             history.push("/login");
         }catch(error){
             setError(error);
@@ -65,6 +79,7 @@ const SignUp =()=>{
                             <Form.Label>Phone</Form.Label>
                             <Form.Control ref={phoneRef} type="phone" required></Form.Control>
                         </Form.Group>
+                     
                         <Button disabled={loading} classname="w-100" type="submit">Sign Up</Button>
                     </Form>
                 </Card.Body>
