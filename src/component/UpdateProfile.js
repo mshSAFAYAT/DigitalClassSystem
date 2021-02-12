@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useRef } from "react";
 import {Button,Card,Form,Alert, Container} from "react-bootstrap";
 import {useAuth} from "../context/AuthContext";
-import {BrowserRouter,Link,Switch, useHistory} from "react-router-dom";
+import {Link,Switch, useHistory} from "react-router-dom";
+import { db, storage } from "./../firebase";
 
 const UpdateProfile =()=>{
     const nameRef = useRef();
@@ -12,17 +13,46 @@ const UpdateProfile =()=>{
     const confirmPasswordRef = useRef();
     const {updateEmail,updatePassword,currentUser} = useAuth();
     const history =useHistory();
+    const [userImg, setUserImg] = useState(null);
+    const types = ['image/png', 'image/jpeg']; // image types
 
     const [error, setError] = useState("");
     const [loading,setLoading] = useState(false);
-
+    const userImgHandler = (e) => {
+        let selectedFile = e.target.files[0];
+        if (selectedFile && types.includes(selectedFile.type)) {
+            setUserImg(selectedFile);
+            setError('')
+        }
+        else {
+            setUserImg(null);
+            setError('Please select a valid image type (jpg or png)');
+        }
+    }
     const handleSubmit =async(e)=>{
         e.preventDefault();
 
         // if(passwordRef.current.value !== confirmPasswordRef.current.value){
         //   return  setError("Passwords do not match!");
         // }
-        
+        const uploadTask = storage.ref(`user-images/${userImg.name}`).put(userImg);
+        uploadTask.on('state_changed', snapshot => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log(progress);
+        }, err => setError(err.message)
+            , () => {
+                storage.ref('user-images').child(userImg.name).getDownloadURL().then(url => {
+                    console.log(url)
+                    db.collection('Users').doc(currentUser.uid )
+                    .update({
+                        ImgURL: url
+                    }).then(() => {
+                        setUserImg('');
+                        setError('');
+                        document.getElementById('file').value = '';
+                    }).catch(err => setError(err.message))
+                })
+            })
             setLoading(true);
             setError("");
             const promises =[];
@@ -61,6 +91,10 @@ const UpdateProfile =()=>{
 
                     ):("")}
                     <Form onSubmit={handleSubmit}>
+                    <label htmlFor="product-img">Product Image</label>
+                <input type="file" className='form-control' id="file" 
+                    onChange={userImgHandler} />
+                <br /> 
                         <Form.Group id ="name">
                             <Form.Label>Name</Form.Label>
                             <Form.Control ref={nameRef} type="text" ></Form.Control>

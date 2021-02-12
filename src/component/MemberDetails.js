@@ -107,7 +107,7 @@ const MemberDetails = (props) => {
             style={{ width: 600, height: 180 }} alt=""
           />
         </div>
-          <span className="card-title"> Student Name : {member}</span>
+          <span className="card-title">  Student Name : {member}</span>
           
 
           <div className="card-action">

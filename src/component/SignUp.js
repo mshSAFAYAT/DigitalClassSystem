@@ -40,6 +40,7 @@ const SignUp =()=>{
             setLoading(true);
             setError("");
             await signup(emailRef.current.value, passwordRef.current.value,nameRef.current.value,phoneRef.current.value,userImg)
+            
             history.push("/login");
         }catch(error){
             setError(error);
@@ -79,7 +80,10 @@ const SignUp =()=>{
                             <Form.Label>Phone</Form.Label>
                             <Form.Control ref={phoneRef} type="phone" required></Form.Control>
                         </Form.Group>
-                     
+                        <label htmlFor="product-img">Product Image</label>
+                <input type="file" className='form-control' id="file" 
+                    onChange={userImgHandler} />
+                <br /> 
                         <Button disabled={loading} classname="w-100" type="submit">Sign Up</Button>
                     </Form>
                 </Card.Body>
