@@ -12,7 +12,18 @@ function CurrentDate() {
 }
 
 const AddPost = (props) => {
-    console.log(props)
+    console.log(props);
+   // const [clId,setClId]=useState("")
+    let clId ="";
+    if(props.data.C == "Join"){
+        console.log(props.data.name.ClassId)
+         clId=props.data.name.ClassId;
+    }
+    else {
+        console.log(props.data.classId)
+
+         clId=props.data.classId;
+    }
     const [loading, setLoading] = useState(false);
     const input = React.createRef();
     const Post = useRef("");
@@ -28,7 +39,7 @@ const AddPost = (props) => {
                     post: Post.current.value,
                     postOwner: currentUser.displayName,
                     postOwnerId: currentUser.uid,
-                    classId: props.data.classId,
+                    classId: clId,
                     //creatTime: db.Timestamp.now(),
                     comments: []
                 }).then((docRef) => {

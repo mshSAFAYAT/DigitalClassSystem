@@ -2,7 +2,7 @@ import React from "react";
 import {Link } from "react-router-dom";
 
 const Class = (props) => {
-  console.log(props)
+ // console.log(props)
  //console.log(props.data.data.ClassName)
   return (
     <div>

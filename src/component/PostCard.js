@@ -23,8 +23,15 @@ import PostDetails from "./PostDetails";
             });
             if(allPosts!=null){
                 console.log(allPosts)
-              let post=allPosts.filter(c=>c.data.classId==props.data.classId && c.data.classId!=undefined)
-                setpost(post)
+                if(props.data.C == "Create"){
+                  let post=allPosts.filter(c=>c.data.classId==props.data.classId && c.data.classId!=undefined)
+                  setpost(post)
+                }
+                else if (props.data.C == "Join"){
+                  let post=allPosts.filter(c=>c.data.classId==props.data.name.ClassId && c.data.classId!=undefined)
+                  setpost(post)
+                }
+             
             }
             else console.log("no Member")
         },(error)=>{
