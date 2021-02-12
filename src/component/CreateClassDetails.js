@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link } from "react-router-dom";
 import AddPost from "./AddPost";
 import NewPost from "./NewPost";
 import PostCard from "./PostCard";
 
 const CreateClassDetails = (props) => {
+  console.log(props.location.state.C)
+  // const [C, setC] = useState("");
+  // setC(props.location.C);
+  const c=props.location.state.C
   return (
     <div>
       <div className="col s12 m7">
@@ -23,23 +27,27 @@ const CreateClassDetails = (props) => {
                 state:{
                   //props.data.data,
                   name:props.location.state,
-
+                  attendance:false,
                 }
               }} className="btn btn-primary w-100 mt-2"
             >
               See Class Members
             </Link>
-            <Link
-              to={{
-                pathname:'/members',
-                state:{
-                  //props.data.data,
-                  name:props.location.state,
-                  attendance:true,
-                }
-              }} className="btn btn-primary w-100 mt-2"
-            >
-             Take Attendance            </Link>
+            {(c=="Create")?(
+              <Link
+                      to={{
+                        pathname:'/members',
+                        state:{
+                          //props.data.data,
+                          name:props.location.state,
+                          attendance:true,
+                        }
+                      }} className="btn btn-primary w-100 mt-2"
+                    >
+                     Take Attendance            </Link>
+
+                    ):("")}
+        
           <div className="card-action">
         <AddPost data={props.location.state}/> 
         <PostCard data={props.location.state}/>        

@@ -17,12 +17,12 @@ const ClassList = (props) => {
                 if(props.C==="Create"){
                   if(book.data.ClassOwner==currentUser.uid)
                   {
-                    return <Class data={book} key={i} />
+                    return <Class data={book} C={"Create"} key={i} />
                   }
                 }else if(props.C==="Join"){
                   if(book.data.ClassMemberID==currentUser.uid)
                   {
-                    return <Class data={book} key={i} />
+                    return <Class data={book} C={"Join"} key={i} />
                   }
                 }
                  

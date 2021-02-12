@@ -2,7 +2,7 @@ import React from "react";
 import {Link } from "react-router-dom";
 
 const Class = (props) => {
-  console.log(props.data)
+  console.log(props.C)
  //console.log(props.data.data.ClassName)
   return (
     <div>
@@ -26,6 +26,7 @@ const Class = (props) => {
                   //props.data.data,
                   name:props.data.data,
                   classId:props.data.id,
+                  C:props.C,
                 }
               }} className="btn btn-primary w-100 mt-2"
             >
