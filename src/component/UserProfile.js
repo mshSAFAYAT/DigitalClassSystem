@@ -8,6 +8,24 @@ import "firebase/auth";
 import * as firebase from "firebase";
 const UserProfile = () => {
     const { currentUser, logout } = useAuth();
+    
+    let[member,setMember]=useState("")
+    let[memberMail,setMemberMail]=useState("")
+    let[memberPhone,setMemberPhone]=useState("") 
+    const getUserDetails=async()=>{
+        db.collection("Users").doc(currentUser.uid).get()
+           .then((doc)=>
+           {
+               setMember(doc.data().Name)
+               setMemberMail(doc.data().Email)
+               setMemberPhone(doc.data().Phone)
+               console.log(doc.data())
+           })
+          
+     }
+     useEffect(()=>{
+        getUserDetails();
+      },[]);
     // console.log(currentUser.phoneNumber)
     // let user = firebase.auth().currentUser;
     return (
@@ -15,15 +33,15 @@ const UserProfile = () => {
             <div className="col s12 m6">
                 <div className="card blue" >
                     <div className="card-content white-text">
-                        <span className="card-title">My Profile</span>
+                        <span className="card-title ">My Profile</span>
                         <div><strong>Name: </strong>
-                            {currentUser && currentUser.displayName}</div>
+                            {member}</div>
                             <div>
                             <strong>Email: </strong>
-                            {currentUser && currentUser.email}</div>
+                            {memberMail}</div>
                             <div>
                             <strong>Phone: </strong>
-                            {currentUser && currentUser.phoneNumber}</div>
+                            {memberPhone}</div>
                     </div>
                     <div className="card-action">
                         <Link to='/update-profile'>Update Profile</Link>

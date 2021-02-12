@@ -11,16 +11,16 @@ const HomePage =()=>{
     const [JoinedClasses,setJoinedClasses] = useState([]);
     const {currentUser,logout} = useAuth();
     const history  = useHistory();
-    const handleLogout = async () =>{
-        setError("");
-        try{
-            await logout().then(() =>{
-            history.push("./login");
-            });
-        }catch(error){
-            setError(error);
-        }
-    };
+    // const handleLogout = async () =>{
+    //     setError("");
+    //     try{
+    //         await logout().then(() =>{
+    //         history.push("./login");
+    //         });
+    //     }catch(error){
+    //         setError(error);
+    //     }
+    // };
     const getClasses=async()=>{
        db.collection("Classes")
         .onSnapshot((querySnapshot)=>{
@@ -66,9 +66,9 @@ const HomePage =()=>{
     return(
         <Container className="d-flex align-items-center justify-content-center"
         style={{minHeight:"100vh"}}>
-        <div className="w-100" style={{maxWidth:"700px"}}>
+        <div className="w-100" style={{maxWidth:"1000px"}}>
         
-            <Card className="text-center mb-4" style={{backgroundColor:"skyblue",paddingBlock:20}}>
+            <Card className="text-center mb-4" style={{backgroundColor:"white",paddingBlock:20,paddingTop:7}}>
                 <Card.Body>
                     <h2 className="text-center mb-4">Home</h2>
                     {error?

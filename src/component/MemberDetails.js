@@ -1,6 +1,8 @@
-import React, { useState,useEffect,useRef } from "react";
-import { db } from "./../firebase";import {Link } from "react-router-dom";
-import { useLocation} from "react-router-dom"
+import React, { useState, useEffect, useRef, PureComponent } from "react";
+import { db } from "./../firebase"; import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom"
+import { Button } from "react-bootstrap";
+import jsPDF from "jspdf"
 
 
 const MemberDetails = (props) => {
@@ -19,6 +21,34 @@ const MemberDetails = (props) => {
         const [reload,setReload]=useState(false);
         let JClass =[];
         //console.log(db);
+        const reportGenetion = async () => {
+          const doc = new jsPDF();
+          let percantage = (present/totalClasses)*100; 
+          percantage = percantage.toFixed(2);
+  
+          if(percantage>75.00){
+          doc.setFontSize(22);
+          doc.text(75, 10, 'Class Report');
+          doc.setFontSize(16);
+          doc.text(20, 30, 'Hello ' + member + ",");
+          doc.text(20, 40, 'Till now ' + totalClasses + " classes are held." + " You were absent in " + absent + " classes and present in ");
+          doc.text(20, 50, present + " classes. Your attendance percentage is " + percantage + ".");
+          doc.text(20, 60, "Good job. Keep it up.");
+          doc.text(20, 70, "From, Course Teacher. " );}
+          else{
+          doc.setFontSize(22);
+          doc.text(75, 10, 'Class Report');
+          doc.setFontSize(16);
+          doc.text(20, 30, 'Hello ' + member + ",");
+          doc.text(20, 40, 'Till now ' + totalClasses + " classes are held." + " You were absent in " + absent + " classes and present in ");
+          doc.text(20, 50, present + "classes. Your attendance percentage is " + percantage + ".");
+          doc.text(20, 60, "Do attend you class regularly");
+          doc.text(20, 70, "From, Course Teacher. " );
+          }
+          // Output as Data URI
+          doc.save("Report.pdf")
+  
+      }
         const getAttendance = async()=>{
           console.log("in")
           let allAttendance=[]
@@ -48,36 +78,7 @@ const MemberDetails = (props) => {
               setTClasses(allAttendance.length)
 
           })
-         
-            // .doc(codeRef)
-            // .onSnapshot((querySnapshot)=>{
-            //     let allAttendance=[]
-            //     querySnapshot.forEach((docRef)=>{
-            //         //console.log(docRef.data())
-            //         allClasses.push({
-            //             id:docRef.id,
-            //             data:docRef.data(),
-            //         });
-            //     });
-            //     if(allClasses!=null){
-            //          JClass=allClasses.filter(c=>c.data.ClassCode==codeRef.current.value )
-            //          console.log(JClass.length)
-            //          if(JClass.length<=0 )
-            //          {
-            //              alert("No Class with this code ");
-            //             console.log("no class");
-            //          }
-            //          else{
-                        
-            //          }
-            //         //console.log(currentUser.displayName)
-            //     }
-            //     else console.log("no class")
-            // },(error)=>{
-            //     console.log(error);
-            // });
-          
-    
+   
         }
         const getMember=async()=>{
           setReload(true)
@@ -89,8 +90,7 @@ const MemberDetails = (props) => {
                setMemberPhone(doc.data().Phone)
                console.log(doc.data())
            })
-          
-           
+                    
         } 
     
         useEffect(()=>{
@@ -120,6 +120,9 @@ const MemberDetails = (props) => {
           <div className="card-content">  Total Absent : {absent}</div>
 
             </div>
+          <Button onClick={reportGenetion}>
+                            Create Report
+                        </Button>
         </div>
       </div>
     </div>

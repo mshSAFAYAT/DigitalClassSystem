@@ -31,7 +31,7 @@ const HeadBarL = () => {
                             style={{ height: "65px" }} />
                     </a>
                     <a className="brand-logo" style={{ marginLeft: 800 }}>
-                        Boi Poka
+                    Digital Class System
           </a>
                 </div>
             </nav>
