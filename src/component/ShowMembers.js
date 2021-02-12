@@ -5,7 +5,7 @@ import MemberCard from "./MemberCard";
 
 const ShowMembers = (props) => {
     console.log(props.location.state)
-    console.log(props.location.state.attendance)
+    console.log(props.location.state.c)
     let count=0;
     let[members,setMembers]=useState([])
     const [reload,setReload]=useState(false);
@@ -21,9 +21,17 @@ const ShowMembers = (props) => {
               });
           });
           if(allMembers!=null){
-             // console.log(allMembers)
-            let member=allMembers.filter(c=>c.data.ClassId==props.location.state.name.classId && c.data.ClassId!=undefined)
+              console.log(allMembers)
+            if(props.location.state.c == "Join")
+            {
+              let member=allMembers.filter(c=>c.data.ClassId==props.location.state.name.name.ClassId && c.data.ClassId!=undefined)
               setMembers(member)
+            }
+            else{
+              let member=allMembers.filter(c=>c.data.ClassId==props.location.state.name.classId && c.data.ClassId!=undefined)
+              setMembers(member)
+            }
+           
           }
           else console.log("no Member")
           setReload(false)
@@ -50,7 +58,7 @@ const ShowMembers = (props) => {
                   return props.location.state.attendance ? (
                     <Attendance data={book} key={i} count={count} />
                 ) : ( 
-                    <MemberCard data={book} key={i} count={count} />
+ <MemberCard data={book} key={i} count={count} />
                 );
                 // return <MemberCard data={book} key={i} count={count} />
             // return <Book data={book} key={i} />

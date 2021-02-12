@@ -28,6 +28,7 @@ const CreateClassDetails = (props) => {
                   //props.data.data,
                   name:props.location.state,
                   attendance:false,
+                  c:c,
                 }
               }} className="btn btn-primary w-100 mt-2"
             >
