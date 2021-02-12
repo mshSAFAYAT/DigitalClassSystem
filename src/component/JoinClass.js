@@ -34,6 +34,7 @@ const JoinClass =()=>{
             });
             if(allClasses!=null){
                  JClass=allClasses.filter(c=>c.data.ClassCode==codeRef.current.value )
+                 console.log(JClass.length)
                  if(JClass.length<=0 )
                  {
                      alert("No Class with this code ");

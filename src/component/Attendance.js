@@ -22,7 +22,7 @@ const Attendance=(props)=>{
             attendanceStatus: 1,
             //creatTime: db.Timestamp.now(),
         }).then((docRef) => {
-            alert("attendance ID: " + docRef.id);
+           // alert("attendance ID: " + docRef.id);
         })
         .catch((error) => {
             alert(error);
@@ -43,7 +43,7 @@ const Attendance=(props)=>{
             attendanceStatus: 0,
             //creatTime: db.Timestamp.now(),
         }).then((docRef) => {
-            alert("attendance ID: " + docRef.id);
+           // alert("attendance ID: " + docRef.id);
         })
         .catch((error) => {
             alert(error);
@@ -60,8 +60,8 @@ return(
           Member:            Emails </Card.Title> */}
           {console.log(props.data.data)}
           <div className=" row"  > 
-          <h5>{props.count} . {props.data.data.ClassMemberMail}   </h5>  
-         <div className=""> <Button variant="Link"  onClick={takePresent}  classname="w-100" type="submit">Present</Button>
+          <h5>{props.count} . {props.data.data.ClassMemberMail} </h5>  
+         <div className=""> <Button variant="Link"  onClick={takePresent}   type="submit">Present</Button> 
           <Button variant="Link"  onClick={takePresent}  classname="w-100" type="submit">Absent</Button>
           </div></div>
     </Card>

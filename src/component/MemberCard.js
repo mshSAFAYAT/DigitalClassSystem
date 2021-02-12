@@ -17,8 +17,11 @@ return(
           <Link
 to={{
 pathname: "/memberDetails",
-state: {name: props.data.data.ClassMemberMail,
+state: {
+  clID:props.data.data.ClassId,
+  name: props.data.data.ClassMemberMail,
 memId:props.data.data.ClassMemberID},
+
 }}>
 <h4>{props.count} . {props.data.data.ClassMemberMail}</h4></Link>  
   
