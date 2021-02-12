@@ -30,8 +30,10 @@ const HeadBar = () => {
                             alt=""
                             style={{ height: "65px" }} />
                     </a>
-                    <a className="brand-logo" style={{ marginLeft: 800 }}>
-          </a>
+                   <Link
+                        to='/'  style={{ marginLeft: 800 , fontSize:26,}}>
+                        Digital Class System
+                     </Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
                             <Link to='/createClass' >Create Class</Link>
@@ -41,7 +43,7 @@ const HeadBar = () => {
                         <Link to='/joinClass'>Join Class</Link>
                         </li>
                         <li>
-                            <a href="collapsible.html">Profile</a>
+                            <a href='/userProfile'>Profile</a>
                         </li>
                         <li>
                             <Button variant="Link" onClick={handleLogout}>Log Out</Button>

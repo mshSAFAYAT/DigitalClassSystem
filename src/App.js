@@ -14,6 +14,7 @@ import CreateClassDetails from "./component/CreateClassDetails";
 import ShowMembers from "./component/ShowMembers";
 import MemberDetails from "./component/MemberDetails";
 import Attendance from "./component/Attendance";
+import UserProfile from "./component/UserProfile";
 
 function App() {
   const { currentUser } = useAuth([]);
@@ -27,6 +28,7 @@ function App() {
     <Route path="/login" exact component={LogIn}/>;
     <Route path="/signup" exact component={SignUp}/>;
     <Privateroute path="/update-profile" exact component={UpdateProfile}/>;
+    <Privateroute path="/userProfile" exact component={UserProfile} />;
     <Privateroute path="/createClass" exact component={CreateClass}/>;
     <Privateroute path="/joinClass" exact component={JoinClass}/>;
     <Privateroute path="/createClassDetails" exact component={CreateClassDetails}/>;

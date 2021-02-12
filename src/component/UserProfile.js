@@ -1,0 +1,45 @@
+import React, { useState, useEffect } from "react";
+import { Button, Card, Alert, Container } from "react-bootstrap";
+import { useAuth } from "./../context/AuthContext";
+import { Link, useHistory } from "react-router-dom";
+import { db } from "./../firebase";
+import ClassList from "./ClassList";
+import "firebase/auth";
+import * as firebase from "firebase";
+const UserProfile = () => {
+    const { currentUser, logout } = useAuth();
+    // console.log(currentUser.phoneNumber)
+    // let user = firebase.auth().currentUser;
+    return (
+        <div className="row">
+            <div className="col s12 m6">
+                <div className="card blue" >
+                    <div className="card-content white-text">
+                        <span className="card-title">My Profile</span>
+                        <div><strong>Name: </strong>
+                            {currentUser && currentUser.displayName}</div>
+                            <div>
+                            <strong>Email: </strong>
+                            {currentUser && currentUser.email}</div>
+                            <div>
+                            <strong>Phone: </strong>
+                            {currentUser && currentUser.phoneNumber}</div>
+                    </div>
+                    <div className="card-action">
+                        <Link to='/update-profile'>Update Profile</Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        // <div><strong>Name: </strong>
+        //     { currentUser && currentUser.displayName}
+        //     <strong>Email: </strong>
+        //     { currentUser && currentUser.email}
+        //     <strong>Phone: </strong>
+        //     { currentUser && currentUser.phoneNumber}</div>
+
+    )
+}
+
+export default UserProfile;

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Link } from "react-router-dom";
 import AddPost from "./AddPost";
-import NewPost from "./NewPost";
 import PostCard from "./PostCard";
 
 const CreateClassDetails = (props) => {

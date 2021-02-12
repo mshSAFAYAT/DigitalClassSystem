@@ -33,31 +33,56 @@ const JoinClass =()=>{
                 });
             });
             if(allClasses!=null){
-                 JClass=allClasses.filter(c=>c.data.ClassCode==codeRef.current.value )
-                 console.log(JClass.length)
-                 if(JClass.length<=0 )
+                 let JVClass=allClasses.filter(c=>c.data.ClassCode==codeRef.current.value )
+                 console.log(JVClass.length)
+                 console.log(JVClass)
+                 let CLID =JVClass[0].id
+                 if(JVClass.length<=0 )
                  {
                      alert("No Class with this code ");
                     console.log("no class");
                  }
                  else{
-                    setJClass(JClass[0].id)
+                    db.collection("JoinedClasses").where("ClassMemberID", "==", currentUser.uid ).where( "ClassId", "==", CLID)
+                    .get()
+                    .then((querySnapshot) => {
+                      querySnapshot.forEach((docRef) => {
+                        JClass.push({
+                              id:docRef.id,
+                            data:docRef.data(),
+                                  });
+                          // doc.data() is never undefined for query doc snapshots
+                      
+                        //   else if( docRef.data().attendanceStatus == 0){
+                        //     ;               
+                        //   }
+                      }); 
+                      console.log(JClass)
+                     if( JClass.length >0){
+                         alert("Already Joined in This Class ");
+                         }   
+                       else{
+     // JClass=JVClass.filter(c=>c.data.ClassCode==codeRef.current.value && c.data.ClassCode==codeRef.current.value)
+                    setJClass(JVClass[0].id)
                     //setJClassName(JClass[0].data.ClassName)
                     //console.log(JClass[0].data.ClassName)
-                    setclassOwner(JClass[0].data.ClassOwner)
+                    setclassOwner(JVClass[0].data.ClassOwner)
                     db.collection("JoinedClasses").add({
-                        ClassId: JClass[0].id,
-                        ClassName: JClass[0].data.ClassName,
+                        ClassId: JVClass[0].id,
+                        ClassName: JVClass[0].data.ClassName,
                         ClassCode: codeRef.current.value,
                         ClassMemberID: currentUser.uid,
                         ClassMemberName: currentUser.displayName,
                         ClassMemberMail: currentUser.email,
-                        ClassOwnerID: JClass[0].data.ClassOwner,
+                        ClassOwnerID: JVClass[0].data.ClassOwner,
                     }).then(()=>{
 
                         alert("Joined in class");
                         history.push("/");
                     })
+                       }  
+                    })
+               
                  }
                 //console.log(currentUser.displayName)
             }
