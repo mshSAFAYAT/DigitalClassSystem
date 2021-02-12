@@ -62,7 +62,7 @@ return(
           <div className=" row"  > 
           <h5>{props.count} . {props.data.data.ClassMemberMail} </h5>  
          <div className=""> <Button variant="Link"  onClick={takePresent}   type="submit">Present</Button> 
-          <Button variant="Link"  onClick={takePresent}  classname="w-100" type="submit">Absent</Button>
+          <Button variant="Link"  onClick={takeAbsent}  classname="w-100" type="submit">Absent</Button>
           </div></div>
     </Card>
 )
