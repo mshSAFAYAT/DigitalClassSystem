@@ -3,7 +3,7 @@ import {Button,Card} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const MemberCard=(props)=>{
-     //console.log(props.count);
+     console.log(props);
      const [details,setDetails]=useState(false);
 
 return(
@@ -14,7 +14,7 @@ return(
         {/* <Card.Title title={"m"} subtitle=' commented on your post'  >
           Member:            Emails </Card.Title> */}
           {console.log(props.data.data)}
-          <Link
+          {(props.c == "Create")?(       <Link
 to={{
 pathname: "/memberDetails",
 state: {
@@ -24,7 +24,8 @@ memId:props.data.data.ClassMemberID},
 
 }}>
 <h4>{props.count} . {props.data.data.ClassMemberMail}</h4></Link>  
-  
+  ):(<h4>{props.count} . {props.data.data.ClassMemberMail}</h4>)}
+   
     </Card>
 )
 }

@@ -80,7 +80,7 @@ const ShowMembers = (props) => {
                     <div>      {(classNo!="null")?(<Attendance data={book} key={i} count={count} classNo={classNo} />):("")}              
                     </div>
                 ) : ( 
-            <MemberCard data={book} key={i} count={count} />
+            <MemberCard data={book} key={i} count={count} c={props.location.state.c} />
                 );
                 // return <MemberCard data={book} key={i} count={count} />
             // return <Book data={book} key={i} />
