@@ -12,19 +12,19 @@ const UserProfile = () => {
     let[member,setMember]=useState("")
     let[memberMail,setMemberMail]=useState("")
     let[memberPhone,setMemberPhone]=useState("") 
-    const getUserDetails=async()=>{
-        db.collection("Users").doc(currentUser.uid).get()
-           .then((doc)=>
-           {
-               setMember(doc.data().Name)
-               setMemberMail(doc.data().Email)
-               setMemberPhone(doc.data().Phone)
-               console.log(doc.data())
-           })
+    // const getUserDetails=async()=>{
+    //     db.collection("Users").doc(currentUser.uid).get()
+    //        .then((doc)=>
+    //        {
+    //            setMember(doc.data().Name)
+    //            setMemberMail(doc.data().Email)
+    //            setMemberPhone(doc.data().Phone)
+    //            console.log(doc.data())
+    //        })
 
-     }
+    //  }
      useEffect(()=>{
-        getUserDetails();
+      //  getUserDetails();
       },[]);
     // console.log(currentUser.phoneNumber)
     // let user = firebase.auth().currentUser;
