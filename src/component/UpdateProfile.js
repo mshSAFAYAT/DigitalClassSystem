@@ -91,7 +91,7 @@ const UpdateProfile =()=>{
 
                     ):("")}
                     <Form onSubmit={handleSubmit}>
-                    <label htmlFor="product-img">Product Image</label>
+                    <label htmlFor="product-img">User Image</label>
                 <input type="file" className='form-control' id="file" 
                     onChange={userImgHandler} />
                 <br /> 

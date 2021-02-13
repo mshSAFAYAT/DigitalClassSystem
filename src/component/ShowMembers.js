@@ -64,11 +64,12 @@ const ShowMembers = (props) => {
              
               <Card>      <h7>Enter Class No </h7>        <input type="code" ref={classNoRef} onChange={setClassNo}></input>
              {console.log(classNo)}
+             <h7>{classNo}</h7>
               </Card>
           ) : ( 
       "")
           }
-          <h7>{classNo}</h7>
+        
           {/* {(classNo!=Null)} */}
           {
             

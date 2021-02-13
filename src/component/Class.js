@@ -2,17 +2,20 @@ import React from "react";
 import {Link } from "react-router-dom";
 
 const Class = (props) => {
- // console.log(props)
+  console.log(props)
  //console.log(props.data.data.ClassName)
   return (
     <div>
       <div className="col s12 m4">
         <div className="card">
         <div className="card-image" style={{ marginBottom: 5 }}>
-          <img
+          {(props.data.data.classImgURL== null)?(<img
             src="https://picsum.photos/200/300"
             style={{width: 200, height: 120 }} alt=""
-          />
+          />):(<img
+            src={props.data.data.classImgURL}
+            style={{width: 200, height: 120 }} alt=""
+          />)}
         </div>
           <span className="card-title">Class {props.data.data.ClassName}</span>
           <div className="card-content">{props.data.data.ClassCode}</div>
