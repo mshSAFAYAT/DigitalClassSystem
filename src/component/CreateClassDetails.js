@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import AddPost from "./AddPost";
 import PostCard from "./PostCard";
 
@@ -11,14 +12,15 @@ const CreateClassDetails = (props) => {
   return (
     <div>
       <div className="col s12 m7">
-        <div className="card " style={{ marginBottom: 5,margin:26 }}>
-        <div className="card-image" style={{ marginBottom: 5,padding:26 }}>
+      <div className="card" style={{ marginTop: 10, marginLeft: 50, marginRight: 50, borderColor: "skyblue" }}>
+      <div style={{ alignSelf: "center" }}>
+        <div className="card-image" style={{ marginBottom: 5,padding:16 }}>
         {(props.location.state.name.classImgURL== null)?(<img
             src="https://picsum.photos/200/300"
-            style={{width: 200, height: 120 }} alt=""
+            style={{width: 300, height: 220 }} alt=""
           />):(<img
             src={props.location.state.name.classImgURL}
-            style={{width: 200, height: 120 }} alt=""
+            style={{width: 300, height: 220 }} alt=""
           />)}
         </div>
           <span className="card-title"> Class {props.location.state.name.ClassName}</span>
@@ -32,7 +34,7 @@ const CreateClassDetails = (props) => {
                   attendance:false,
                   c:c,
                 }
-              }} className="btn btn-primary w-100 mt-2"
+              }} className="btn btn-primary "
             >
               See Class Members
             </Link>
@@ -46,7 +48,7 @@ const CreateClassDetails = (props) => {
                           attendance:true,
                           c:c,
                         }
-                      }} className="btn btn-primary w-100 mt-2"
+                      }} className="btn btn-primary "
                     >
                      Take Attendance            </Link>
 
@@ -62,6 +64,7 @@ const CreateClassDetails = (props) => {
             </Link>
             </div>
         </div>
+      </div>
       </div>
     </div>
   );

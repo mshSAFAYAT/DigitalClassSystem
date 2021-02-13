@@ -31,7 +31,7 @@ const SignUp =()=>{
             setError("");
             await signup(emailRef.current.value, passwordRef.current.value,nameRef.current.value,phoneRef.current.value,userImg)
             
-            history.push("/login");
+            history.push("/");
         }catch(error){
             setError(error);
         }

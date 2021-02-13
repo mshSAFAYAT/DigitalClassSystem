@@ -11,16 +11,7 @@ const HomePage =()=>{
     const [JoinedClasses,setJoinedClasses] = useState([]);
     const {currentUser,logout} = useAuth();
     const history  = useHistory();
-    // const handleLogout = async () =>{
-    //     setError("");
-    //     try{
-    //         await logout().then(() =>{
-    //         history.push("./login");
-    //         });
-    //     }catch(error){
-    //         setError(error);
-    //     }
-    // };
+   
     const getClasses=async()=>{
        db.collection("Classes")
         .onSnapshot((querySnapshot)=>{
@@ -70,7 +61,9 @@ const HomePage =()=>{
         
             <Card className="text-center mb-4" style={{backgroundColor:"white",paddingBlock:20,paddingTop:7}}>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Home</h2>
+                    <div className="row"><h5 className="text-left mb-4" style={{paddingRight:100}}>Home</h5>
+                    <h5 className="text-center mb-4">Welcome {currentUser.displayName}</h5></div>
+                    
                     {error?
                     <Alert variant="danger">{JSON.stringify(error)}</Alert>
                     :""}

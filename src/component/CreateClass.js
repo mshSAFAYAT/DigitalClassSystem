@@ -104,9 +104,10 @@ const CreateClass =()=>{
                 <br />  
                         <Button disabled={loading} classname="w-100" type="submit">Create</Button>
                     </Form>
-                    <div className="w-100 text-center mt-2"><Link to="/">Cancel</Link></div>
                 </Card.Body>
             </Card>
+            <div className="w-100 text-center mt-2 "><Link className="btn btn-danger" to="/">Cancel</Link></div>
+
         </div>
         </Container>
     )

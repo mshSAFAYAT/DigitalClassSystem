@@ -7,7 +7,7 @@ const PostDetails = (props) => {
   return (
     <div>
       <div className="col s12 m9">
-        <div className="card">
+      <div className="card" style={{marginTop:10,marginLeft:50,marginRight:50,borderColor:"skyblue"}}>
       
           <span className="card-title" style={{fontSize:22,paddingLeft:5,color:"blue"}}>  {props.data.data.postOwner}</span>
           <span className="card-subtitle" style={{fontSize:16,paddingTop:1,paddingLeft:5}}> {props.data.data.postOwnerEmail}</span>

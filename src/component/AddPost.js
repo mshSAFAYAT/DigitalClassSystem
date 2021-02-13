@@ -71,24 +71,40 @@ const AddPost = (props) => {
        
       },[])
     return (
-        <div>
-            <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Control type="text" placeholder="Write a Post" ref={Post}
-
-                    // onChangeText={
-                    //     function (currentPost) {
-
-                    //     }
-                    // }
+        <Card style={{ paddingLeft: 500, marginTop: 10, marginLeft: 50, marginRight: 50, borderColor: "skyblue" }}>
+        <div className="col s12 m9" style={{ alignSelf: "center", margin: 20 }}>
+            <Form >
+                <Form.Group className="col s12 m9" controlId="formBasicEmail">
+                    <Form.Control className="form-group col-md-6" type="text" placeholder="Write a Post" ref={Post}
                     />
                 </Form.Group>
-                <Button variant="Link" type="submit"  
+                <Button variant="Link" type="submit"
+
+                    className="btn btn-primary"
                     onClick={handlePost}>
                     Post
-                </Button>
+            </Button>
             </Form>
         </div>
+    </Card>
+        // <div>
+        //     <Form>
+        //         <Form.Group controlId="formBasicEmail">
+        //             <Form.Control type="text" placeholder="Write a Post" ref={Post}
+
+        //             // onChangeText={
+        //             //     function (currentPost) {
+
+        //             //     }
+        //             // }
+        //             />
+        //         </Form.Group>
+        //         <Button variant="Link" type="submit"  
+        //             onClick={handlePost}>
+        //             Post
+        //         </Button>
+        //     </Form>
+        // </div>
     )
 }
 

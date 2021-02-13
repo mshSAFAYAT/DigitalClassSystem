@@ -14,7 +14,7 @@ const UpdateProfile =()=>{
     const {updateEmail,updatePassword,currentUser} = useAuth();
     const history =useHistory();
     const [userImg, setUserImg] = useState(null);
-    const types = ['image/png', 'image/jpeg']; // image types
+    const types = ['image/png', 'image/PNG','image/jpeg']; // image types
 
     const [error, setError] = useState("");
     const [loading,setLoading] = useState(false);

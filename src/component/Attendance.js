@@ -5,7 +5,7 @@ import {useAuth } from "../context/AuthContext";
 import { db } from "./../firebase";
 
 const Attendance=(props)=>{
-     console.log(props.classNo);
+     console.log(props);
      const {currentUser} = useAuth();
      const [details,setDetails]=useState(false);
      const getAttendance = async()=>{
