@@ -18,6 +18,8 @@ const UpdateProfile =()=>{
 
     const [error, setError] = useState("");
     const [loading,setLoading] = useState(false);
+    console.log(currentUser.photoURL)
+
     const userImgHandler = (e) => {
         let selectedFile = e.target.files[0];
         if (selectedFile && types.includes(selectedFile.type)) {
@@ -43,6 +45,7 @@ const UpdateProfile =()=>{
             , () => {
                 storage.ref('user-images').child(userImg.name).getDownloadURL().then(url => {
                     console.log(url)
+                    console.log(currentUser)
                     db.collection('Users').doc(currentUser.uid )
                     .update({
                         ImgURL: url
@@ -95,10 +98,10 @@ const UpdateProfile =()=>{
                 <input type="file" className='form-control' id="file" 
                     onChange={userImgHandler} />
                 <br /> 
-                        <Form.Group id ="name">
+                        {/* <Form.Group id ="name">
                             <Form.Label>Name</Form.Label>
                             <Form.Control ref={nameRef} type="text" ></Form.Control>
-                        </Form.Group>
+                        </Form.Group> */}
                         <Form.Group id ="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control ref={emailRef} type="email" required defaultValue={currentUser.email}></Form.Control>

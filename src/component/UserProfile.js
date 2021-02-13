@@ -26,19 +26,23 @@ const UserProfile = () => {
      useEffect(()=>{
       //  getUserDetails();
       },[]);
-    // console.log(currentUser.phoneNumber)
+    console.log(currentUser.photoURL)
     // let user = firebase.auth().currentUser;
     return (
         <div className="row">
             <div className="col s12 m6">
                 <div className="card blue" >
+                {(currentUser.photoURL != null)?(<img
+            src={currentUser.photoURL}
+            style={{width: 200, height: 120 }} alt=""
+          />):("")}
                     <div className="card-content white-text">
                         <span className="card-title ">My Profile</span>
                         <div><strong>Name: </strong>
-                            {member}</div>
+                            {currentUser.displayName}</div>
                             <div>
                             <strong>Email: </strong>
-                            {memberMail}</div>
+                            {currentUser.email}</div>
                             <div>
                             <strong>Phone: </strong>
                             {memberPhone}</div>

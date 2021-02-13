@@ -14,6 +14,7 @@ const AuthProvider = (props)=>{
     const signup = (email,password,name,phone,userImg)=>{
         
         return auth.createUserWithEmailAndPassword(email, password).then((cred) =>{
+            cred.user.updateProfile({displayName:name})
             db.collection("Users").doc(cred.user.uid).set({
                 Name: name,
                 Phone: phone,

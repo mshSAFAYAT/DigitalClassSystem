@@ -6,7 +6,7 @@ import PostCard from "./PostCard";
 const CreateClassDetails = (props) => {
   console.log(props.location)
   // const [C, setC] = useState("");
-  // setC(props.location.C);
+   console.log(props.location);
   const c=props.location.state.C
   return (
     <div>

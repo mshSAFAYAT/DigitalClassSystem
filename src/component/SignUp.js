@@ -19,17 +19,7 @@ const SignUp =()=>{
     const [loading,setLoading] = useState(false);
     const history  = useHistory();
 
-    const userImgHandler = (e) => {
-        let selectedFile = e.target.files[0];
-        if (selectedFile && types.includes(selectedFile.type)) {
-            setUserImg(selectedFile);
-            setError('')
-        }
-        else {
-            setUserImg(null);
-            setError('Please select a valid image type (jpg or png)');
-        }
-    }
+   
     const handleSubmit =async(e)=>{
         e.preventDefault();
 
@@ -80,10 +70,7 @@ const SignUp =()=>{
                             <Form.Label>Phone</Form.Label>
                             <Form.Control ref={phoneRef} type="phone" required></Form.Control>
                         </Form.Group>
-                        <label htmlFor="product-img">Product Image</label>
-                <input type="file" className='form-control' id="file" 
-                    onChange={userImgHandler} />
-                <br /> 
+                      
                         <Button disabled={loading} classname="w-100" type="submit">Sign Up</Button>
                     </Form>
                 </Card.Body>

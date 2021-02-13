@@ -35,14 +35,15 @@ const JoinClass =()=>{
             if(allClasses!=null){
                  let JVClass=allClasses.filter(c=>c.data.ClassCode==codeRef.current.value )
                  console.log(JVClass.length)
-                 console.log(JVClass)
-                 let CLID =JVClass[0].id
+                 //let CLID =JVClass[0].id
                  if(JVClass.length<=0 )
                  {
                      alert("No Class with this code ");
                     console.log("no class");
                  }
                  else{
+                    console.log(JVClass[0].data)
+                    let CLID =JVClass[0].id
                     db.collection("JoinedClasses").where("ClassMemberID", "==", currentUser.uid ).where( "ClassId", "==", CLID)
                     .get()
                     .then((querySnapshot) => {
@@ -75,6 +76,7 @@ const JoinClass =()=>{
                         ClassMemberName: currentUser.displayName,
                         ClassMemberMail: currentUser.email,
                         ClassOwnerID: JVClass[0].data.ClassOwner,
+                        classImgURL: JVClass[0].data.classImgURL,
                     }).then(()=>{
 
                         alert("Joined in class");
